@@ -20,8 +20,8 @@ df_target = funciones.crea_target_long(df=df_optimo, nombre_target="LONG_target_
 
 ##################### Train y test del df original   ###################
 # Defino X e y
-X = df_optimo[col_indicadores_num]
-y = df_optimo['target']
+X = df_target[col_indicadores_num]
+y = df_target["LONG_target_20p_05"]
 
 # Divido el conjunto de datos en conjuntos de entrenamiento y prueba del dataset sin haber hecho balanceo de clases
 X_train1, X_test1, y_train1, y_test1 = train_test_split(X, y, test_size=0.25, random_state=49150)#, stratify=y)
@@ -50,7 +50,7 @@ print('F1 Score: ', f1)
 print('Matriz de confusion: ',cm)'''
 
 ################### Guardo Modelo ##################### *****NUEVO******
-funciones.guardar_modelo(mejor_modelo, 'lgbm_tuning_model_1.joblib')#Agregar el parametro "Nuevo Nombre"
+funciones.guardar_modelo(mejor_modelo, nuevo_nombre = 'lgbm_tuning_model_1.joblib')
 
 
 ################# Guardo experimentos con MLFlow  ######################
