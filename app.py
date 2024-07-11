@@ -16,7 +16,7 @@ df_optimo = funciones.tratar_df(df)
 
 ############   Agrego columnas target   #################
 df_target = funciones.crea_target_long(df=df_optimo, nombre_target="LONG_target_20p_05",porciento_varia = 0.5, proyeccion = 20)
-print(df_target["target"])
+#print(df_target["target"])
 
 ##################### Train y test del df original   ###################
 # Defino X e y
@@ -37,7 +37,7 @@ X_resampled, y_resampled = ros.fit_resample(X, y)
 X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.25, random_state=49150)
 
 ###################   Encontrar los mejores parametros   ######################### deberia ser una funcion
-#mejor_modelo, mejores_hiperparametros = funciones.buscar_hiper_LGBM(X_resampled, y_resampled)
+mejor_modelo, mejores_hiperparametros = funciones.buscar_hiper_LGBM(X_resampled, y_resampled)
 
 ################## Metricas #########################
 #accuracy, precision, recall, f1, cm = funciones.calcular_metricas(X_test, y_test, mejor_modelo)
@@ -50,7 +50,11 @@ print('F1 Score: ', f1)
 print('Matriz de confusion: ',cm)'''
 
 ################### Guardo Modelo ##################### *****NUEVO******
-#funciones.guardar_modelo(mejor_modelo)#Agregar el parametro "Nuevo Nombre"
+funciones.guardar_modelo(mejor_modelo, 'lgbm_tuning_model_1.joblib')#Agregar el parametro "Nuevo Nombre"
 
+
+################# Guardo experimentos con MLFlow  ######################
 # Configurar el URI de seguimiento de MLflow para usar Google Drive
 #mlflow.set_tracking_uri('/mlruns')
+#C:\01_DATOS\02_CURSOS\00_DATA_SCIENCE 2\00_Experimentos\Entrenador_04 - cripto\modelos
+#modelos

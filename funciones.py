@@ -29,11 +29,11 @@ def tratar_df(df):
 
 
 #Funcion que guarda el modelo ****NUEVO****
-def guardar_modelo(modelo):
-  file_path = '/modelos'
+def guardar_modelo(modelo, nuevo_nombre = "No_name"):
+  file_path = 'modelos'
 
   # Llamar a la función de guardar después de entrenar el modelo
-  ruta_modelo = os.path.join(file_path, 'lgbm_tuning_model.joblib')
+  ruta_modelo = os.path.join(file_path, nuevo_nombre)
   dump(modelo, ruta_modelo)
   print(f"Modelo guardado en: {ruta_modelo}")
 
